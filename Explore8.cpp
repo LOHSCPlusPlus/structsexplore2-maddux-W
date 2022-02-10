@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 struct Point {
@@ -47,15 +46,32 @@ Point FindMidPoint(Line l) {
     mid.y = (l.start.y + l.end.y)/2.0;
     return mid;
 }
+Point FindLowestPoint(Line l) {
+  Point low;
+  if (l.start.y < l.end.y){
+    low.y = l.start.y;
+    low.x = l.start.x;
+  }
+  else {
+    low.y = l.end.y;
+    low.x = l.end.x;
+  }
+  return low;
+}
 
 int main() {
     Line a(Point(3,9), Point(12,22));
+    Line b(Point(7,-9), Point(8,-15));
     cout << "Line a";
     PrintLine(a);
     cout << "Line a's midpoint";
     // This is new
     Point midPoint = FindMidPoint(a);
     PrintPoint(midPoint);
+    cout << endl;
+    cout << "Line b's lowest";
+    Point lowest = FindLowestPoint(b);
+    PrintPoint(lowest);
     cout << endl;
     return 0;
 }
